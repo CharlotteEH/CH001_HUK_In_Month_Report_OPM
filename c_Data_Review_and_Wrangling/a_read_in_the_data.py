@@ -9,5 +9,3 @@ pd.set_option('display.width', None)
 
 df = pd.read_csv("../b_SQL_Data_Pull/data.csv", parse_dates=[
     "date"])  # treat dates as dates not objects, faster.  can put multiple dates in square brackets
-
-print(df.head(5))

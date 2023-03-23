@@ -11,9 +11,10 @@ sql_query = f"""
 select distinct h.D_DateKey as date,  -- The date column to use
     h.OT_CGAIdent as outlet_id,  -- The outlet unique number
        o.OT_TL2_Novellus as region,  -- The regions of the country to use
-       h.OT_SL4 as segment,  -- The segments of the outlet, for example; bar, restaurant
+       h.OT_SL1 as segment,  -- The segments of the outlet, for example; bar, restaurant
        h.OT_LocationDescription as location,  -- What part of area it is in, for example; high street, city centre
        h.PI_ClientDescription as data_partner,  -- The data partner that supplied the data
+       h.PT_GL3_CGA as brand,  -- Product brand
        h.PT_GL5_CGA as brewer,  -- The company who own and brew the product (not the supplier or distributor, be warned: CS often call the brewer "supplier")
     sum(h.[F_SalesValue_£]) as value,  -- The money paid by the consumer
        sum(h.F_SalesVolume_MLS) as volume  -- The volume in MLS
@@ -31,9 +32,10 @@ where h.D_DateId >= 20230101  -- The earliest date to use, we use this column fo
 group by h.D_DateKey,
     h.OT_CGAIdent,
        o.OT_TL2_Novellus,
-       h.OT_SL4,
+       h.OT_SL1,
        h.OT_LocationDescription,
        h.PI_ClientDescription,
+       h.PT_GL3_CGA,
        h.PT_GL5_CGA;
 
 """
