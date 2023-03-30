@@ -5,7 +5,7 @@ import pandas as pd
 
 dp_volumes = df.groupby(
     [
-        "date", "market", "brewer", "data_partner"
+        "date", "market", "product", "product_group", "data_partner"
     ]
 ).agg(
     {
@@ -21,7 +21,7 @@ dp_volumes = dp_volumes.rename(columns={"volume":"dp_volume"})
 
 total_volumes = dp_volumes.groupby(
     [
-        "date", "market", "brewer"
+        "date", "market", "product", "product_group"
     ]
 ).agg(
     {
@@ -36,8 +36,8 @@ total_volumes = total_volumes.rename(columns={"dp_volume":"total_volume"})
 
 nda = pd.merge(
     dp_volumes, total_volumes,
-    left_on= ["date", "market", "brewer"],
-    right_on= ["date", "market", "brewer"],
+    left_on= ["date", "market", "product", "product_group"],
+    right_on= ["date", "market", "product", "product_group"],
     how="inner"
 )
 # total volume for market on that day
@@ -48,7 +48,7 @@ nda["dp_volume_share"] = nda["dp_volume"]/nda["total_volume"]
 
 nda["rank"] = nda.groupby(
     [
-        "date", "market", "brewer"
+        "date", "market", "product", "product_group"
     ])["dp_volume_share"].rank(ascending=False)
 
 nda = nda.loc[nda["rank"]==1]
@@ -56,7 +56,7 @@ nda = nda.loc[nda["rank"]==1]
 nda = nda.rename(columns={"data_partner":"nda_data_partner_with_max_share",
                           "dp_volume_share":"nda_max_data_partner_share"})
 
-nda = nda[["date", "market", "brewer", "nda_max_data_partner_share", "nda_data_partner_with_max_share"]]
+nda = nda[["date", "market", "product", "product_group", "nda_max_data_partner_share", "nda_data_partner_with_max_share"]]
 
 print(nda.head(2))
 

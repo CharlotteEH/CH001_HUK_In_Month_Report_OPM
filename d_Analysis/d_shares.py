@@ -5,7 +5,7 @@ from c_append_data import df
 # brewer share
 bs = df.groupby(
     [
-        "date", "market", "brewer"
+        "date", "market", "product", "product_group"
     ]
 ).agg(
     {
@@ -19,7 +19,7 @@ bs = bs.reset_index()
 # total share
 ts = bs.groupby(
     [
-        "date", "market"
+        "date", "market", "product_group"
     ]
 ).agg(
     {
@@ -36,8 +36,8 @@ ts = ts.rename(columns={"value":"total_value", "volume":"total_volume"})
 
 bs = pd.merge(
     bs, ts,
-    left_on=["date", "market"],
-    right_on=["date", "market"],
+    left_on=["date", "market", "product_group"],
+    right_on=["date", "market", "product_group"],
     how="inner"
 )
 
