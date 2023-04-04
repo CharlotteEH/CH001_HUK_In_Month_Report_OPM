@@ -1,3 +1,6 @@
 /b_SQL_Data_Pull/data.csv
 /c_Data_Review_and_Wrangling/data_cleaned.csv
 /d_Analysis/results.csv
+/d_Analysis/list_date.csv
+/d_Analysis/list_market.csv
+/d_Analysis/list_product.csv
