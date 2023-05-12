@@ -2,6 +2,8 @@ import pandas as pd
 
 from c_append_data import df
 
+print(df.head())
+
 # brewer share
 bs = df.groupby(
     [
@@ -15,6 +17,8 @@ bs = df.groupby(
 )
 bs.columns = bs.columns.get_level_values(0)
 bs = bs.reset_index()
+
+print(bs.head())
 
 # total share
 ts = bs.groupby(
@@ -33,6 +37,7 @@ ts = ts.reset_index()
 
 ts = ts.rename(columns={"value":"total_value", "volume":"total_volume"})
 
+print(ts.head())
 
 bs = pd.merge(
     bs, ts,

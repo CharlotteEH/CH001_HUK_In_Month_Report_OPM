@@ -3,28 +3,36 @@ import pandas as pd
 from b_review_the_data import df
 df["brewer_group"] = "Group Brewer | " + df["product_class"]
 df["brand_group"] = "Group Brand | " + df["product_class"]
+df["product_group"] = "Group Product | " + df["product_class"]
 
 print(df.head(2))
-df_brewer = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brewer", "value", "volume", "country", "brewer_group"]]
+df_brewer = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brewer", "value", "volume",
+                "country", "brewer_group"]]
 df_brewer = df_brewer.rename(columns={
     "brewer": "product",
     "brewer_group": "product_group"
 })
 
-df_brand = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brand", "value", "volume", "country", "brand_group"]]
+df_brand = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brand", "value", "volume",
+               "country", "brand_group"]]
 df_brand = df_brand.rename(columns={
     "brand": "product",
     "brand_group": "product_group"
 })
+
+df_product = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "product", "value", "volume",
+                "country", "product_group"]]
+df_product = df_product.rename(columns={
+    "product": "product",
+    "product_group": "product_group"
+})
+
 df = pd.concat(
     [
-        df_brewer, df_brand
+        df_brewer, df_brand, df_product
     ], axis=0
 )
 
-
-print(df_brewer.head(2))
-print(df_brand.head(2))
 
 region = df[[
     "date", "outlet_id", "region", "data_partner", "product", "product_group", "value", "volume"

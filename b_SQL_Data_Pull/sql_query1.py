@@ -13,8 +13,12 @@ select distinct h.D_DateKey as date,  -- The date column to use
        o.OT_TL2_Novellus as region,  -- The regions of the country to use
        h.OT_SL1 as segment,  -- The segments of the outlet, for example; bar, restaurant
        h.OT_LocationDescription as location,  -- What part of area it is in, for example; high street, city centre
-       h.PI_ClientDescription as data_partner,  -- The data partner that supplied the data
-       h.PT_CL5_CGA AS product_class, -- beer or cider
+       h.PI_ClientDescription as data_partner, -- The data partner that supplied the data
+       h.PT_ProductDescription as product,  -- Product level data
+       h.PT_AT_HUK_Segment AS product_segment, 
+       h.PT_AT_Cil_Segment AS cil_segment,
+       h.PT_CL3_CGA AS product_class, -- e.g. premium cider, standard lager
+       h.PT_CL5_CGA AS product_group, -- beer or cider
        h.PT_GL3_CGA as brand,  -- Product brand
        h.PT_GL5_CGA as brewer,  -- The company who own and brew the product (not the supplier or distributor, be warned: CS often call the brewer "supplier")
     sum(h.[F_SalesValue_£]) as value,  -- The money paid by the consumer
@@ -36,6 +40,10 @@ group by h.D_DateKey,
        h.OT_SL1,
        h.OT_LocationDescription,
        h.PI_ClientDescription,
+       h.PT_ProductDescription,
+       h.PT_AT_HUK_Segment,
+       h.PT_AT_Cil_Segment,
+       h.PT_CL3_CGA,
        h.PT_CL5_CGA,
        h.PT_GL3_CGA,
        h.PT_GL5_CGA;

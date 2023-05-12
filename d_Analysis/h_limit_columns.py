@@ -39,7 +39,7 @@ results = pd.merge(
 # rearrange order of columns
 
 results = results[[
-    "date", "market", "product_group", "product", "value_share", "volume_share", "value_ros", "volume_ros",
+    "date", "market", "product", "product_group", "value_share", "volume_share", "value_ros", "volume_ros",
     "dist_pen", "nda_outlet_count", "nda_data_partner", "nda_max_data_partner_share", "nda_data_partner_with_max_share"
 ]]
 

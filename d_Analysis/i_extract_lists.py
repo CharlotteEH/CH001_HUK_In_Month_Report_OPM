@@ -11,7 +11,7 @@ list_market = results[["market"]]
 list_market = list_market.drop_duplicates()
 list_market = list_market.sort_values(by=["market"])
 
-list_product = results[["product_group", "product"]]
+list_product = results[["product", "product_group"]]
 list_product = list_product.drop_duplicates()
 list_product = list_product.sort_values(by=["product_group", "product"])
 
