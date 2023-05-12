@@ -15,3 +15,8 @@ list_product = results[["product", "product_group"]]
 list_product = list_product.drop_duplicates()
 list_product = list_product.sort_values(by=["product_group", "product"])
 
+# list_product_group = results[["product_group"]]
+# list_product_group = list_product_group.drop_duplicates()
+# list_product_group = list_product_group.sort_values(by=["product_group"])
+#
+
