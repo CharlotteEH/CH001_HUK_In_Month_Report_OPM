@@ -14,6 +14,7 @@ select distinct h.D_DateKey as date,  -- The date column to use
        h.OT_SL1 as segment,  -- The segments of the outlet, for example; bar, restaurant
        h.OT_LocationDescription as location,  -- What part of area it is in, for example; high street, city centre
        h.PI_ClientDescription as data_partner, -- The data partner that supplied the data
+       h.PT_ProductId as product_id,
        h.PT_ProductDescription as product,  -- Product level data
        h.PT_AT_HUK_Segment AS product_segment, 
        h.PT_AT_Cil_Segment AS cil_segment,
@@ -40,6 +41,7 @@ group by h.D_DateKey,
        h.OT_SL1,
        h.OT_LocationDescription,
        h.PI_ClientDescription,
+       h.PT_ProductId,
        h.PT_ProductDescription,
        h.PT_AT_HUK_Segment,
        h.PT_AT_Cil_Segment,

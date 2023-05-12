@@ -1,6 +1,7 @@
-from a_read_in_the_data import df
+from a_read_in_the_data import df, cider_flavours
 
 print("\nthe head of df is:\n", df.head(5), "\n")
+print("\nthe head of cider_flavours is:\n", cider_flavours.head(5), "\n")
 
 # check the dates
 u = df["date"].unique()
