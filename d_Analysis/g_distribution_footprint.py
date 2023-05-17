@@ -3,7 +3,7 @@ import pandas as pd
 
 bd = df.groupby(
     [
-        "date", "market", "product", "product_group"
+        "date", "market", "product", "drink_group"
     ]
 ).agg(
     {

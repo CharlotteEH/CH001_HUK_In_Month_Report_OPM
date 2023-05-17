@@ -4,7 +4,7 @@ import pandas as pd
 
 ros = df.groupby(
     [
-        "date", "market", "product", "product_group"
+        "date", "market", "product", "drink_group"
     ]
 ).agg(
     {

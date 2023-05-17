@@ -7,7 +7,7 @@ print(df.head())
 # brewer share
 bs = df.groupby(
     [
-        "date", "market", "product", "product_group"
+        "date", "market", "product", "drink_group"
     ]
 ).agg(
     {
@@ -23,7 +23,7 @@ print(bs.head())
 # total share
 ts = bs.groupby(
     [
-        "date", "market", "product_group"
+        "date", "market", "drink_group"
     ]
 ).agg(
     {
@@ -41,8 +41,8 @@ print(ts.head())
 
 bs = pd.merge(
     bs, ts,
-    left_on=["date", "market", "product_group"],
-    right_on=["date", "market", "product_group"],
+    left_on=["date", "market", "drink_group"],
+    right_on=["date", "market", "drink_group"],
     how="inner"
 )
 
@@ -50,5 +50,3 @@ bs["value_share"]=bs["value"]/bs["total_value"]
 bs["volume_share"]=bs["volume"]/bs["total_volume"]
 
 
-
-print(bs.head(2))

@@ -10,6 +10,7 @@ sql_query = f"""
 select distinct PT_ProductId as product_id,
     PT_ProductDescription as product,
     PT_ClassificationLevel3Description as cider_flavour
+    
 from PL_LIVE.dbo.vw_Product_CC_Magners
 where PT_ProductId > 0
     and PT_CL5_CGA = N'Total Cider'
