@@ -159,7 +159,8 @@ print(df.head(10))
 
 conditions = [
 ((df["product_class"] == "Premium Lager") * (df["product_segment"] == "Premium")),
-((df["product_class"] == "Premium Lager") * (df["cil_segment"] == "Premium")),
+#((df["product_class"] == "Premium Lager") * (df["cil_segment"] == "Premium")),
+((df["product_segment"] == "Craft") * (df["product_class"] == "Premium Lager")),
 ((df["product_segment"] == "Classic") * (df["product_class"] == "Standard Lager")),
 ((df["product_segment"] == "Classic") * (df["product_class"] == "Premium Lager")),
 ((df["product_segment"] == "Mainstream") * (df["product_class"] == "Standard Lager")),
@@ -176,6 +177,7 @@ conditions = [
 
 choices = [
 "Premium Lager",
+#"Premium Lager",
 "Premium Lager",
 "Classic Lager",
 "Classic Lager",
@@ -192,5 +194,11 @@ choices = [
 
 df["custom_product_group"] = np.select(conditions, choices)
 
-print(df.head(10))
+print(df.head(20))
 
+df.loc[(df["brand"].isin(["Kopparberg"])) & (df["cider_flavour"] == "Fruit"), "product"] = "Kopparberg (all flavours)"
+df.loc[(df["brand"].isin(["Old Mout Cider"])) & (df["cider_flavour"] == "Fruit"), "product"] = "Old Mout Cider (all flavours)"
+df.loc[(df["brand"].isin(["Rekorderlig"])) & (df["cider_flavour"] == "Fruit"), "product"] = "Rekorderlig (all flavours)"
+df.loc[(df["brand"].isin(["Bulmers"])) & (df["cider_flavour"] == "Fruit"), "product"] = "Bulmers (all flavours)"
+
+print(df.head(20))

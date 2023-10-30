@@ -3,8 +3,8 @@ import pandas as pd
 from b_review_the_data import df
 
 df = df[df["custom_product_group"].isin(["Premium Lager", "Classic Lager", "Mainstream Lager", "Craft Ale", "Classic Ale", "Stout", "Apple Cider", "Flavoured Cider"])]
-df["brewer_group"] = "Group Brewer | " + df["custom_product_group"]
-df["brand_group"] = "Group Brand | " + df["custom_product_group"]
+df["brewer_group"] = "Group Brewer | " + df["product_group"]
+#df["brand_group"] = "Group Brand | " + df["custom_product_group"]
 df["drink_group"] = "Group Product | " + df["custom_product_group"]
 
 print(df.head(2))
@@ -16,12 +16,12 @@ df_brewer = df_brewer.rename(columns={
 })
 print(df_brewer.head(20))
 #
-df_brand = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brand", "value", "volume",
-               "country", "brand_group"]]
-df_brand = df_brand.rename(columns={
-    "brand": "product",
-    "brand_group": "drink_group"
-})
+# df_brand = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "brand", "value", "volume",
+#                "country", "brand_group"]]
+# df_brand = df_brand.rename(columns={
+#     "brand": "product",
+#     "brand_group": "drink_group"
+# })
 
 df_product = df[["date", "outlet_id", "region", "segment", "location", "data_partner", "product", "value", "volume",
                 "country", "drink_group"]]
@@ -32,7 +32,7 @@ df_product = df_product.rename(columns={
 
 df = pd.concat(
     [
-        df_brewer, df_brand, df_product
+        df_brewer,  df_product  # df_brand,
     ], axis=0
 )
 
@@ -69,8 +69,8 @@ df = pd.concat([region, segment, location, country], axis=0)
 
 
 df["market"] = df["market_group"]+" | " + df["market"]
-from pathlib import Path
-
-cwd = Path(__file__).parent
-
-df.to_csv(cwd / "test.csv", index=False)
+# from pathlib import Path
+#
+# cwd = Path(__file__).parent
+#
+# df.to_csv(cwd / "test.csv", index=False)

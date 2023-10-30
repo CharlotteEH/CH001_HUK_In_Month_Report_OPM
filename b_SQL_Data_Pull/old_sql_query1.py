@@ -9,12 +9,8 @@ from connection import engine
 
 
 today = dt.today()
-days_ago_1 = dt.strptime("2023-01-01", "%Y-%m-%d")
+days_ago_1 = today - td(days=45) # subtract 45 days
 days_ago_2 = today - td(days=17)
-
-print(today)
-print(days_ago_1)
-print(days_ago_2)
 
 start_date = days_ago_1.strftime('%Y-%m-%d')
 end_date = days_ago_2.strftime('%Y-%m-%d')
@@ -45,9 +41,9 @@ select distinct h.D_DateKey as date,  -- The date column to use
 from WS_LIVE.dbo.vw_Epos_HUK_Weekly as h  -- The Heineken database to use for HUK EPOS projects.  HUK data that is not shared with others.  + customer segmentation.
     inner join OI_LIVE.dbo.vw_Outlet as o  -- We had to join on this to get the newer Novellus / BARB outlet segmentation since they are not in the HUK databases
            on h.OT_CGAIdent = o.OT_CGAIdent  -- The column we joined
-where h.D_Period >= 222
- and h.D_DateKey  <= '{end_date} 00:00:00.000'
- and h.PT_CL5_CGA in (N'Total Beer', N'Total Cider')  -- Limit to beer and cider, PT_CL5_CGA has these
+where h.D_DateKey  >= '{start_date} 00:00:00.000'
+    and h.D_DateKey  < '{end_date} 00:00:00.000' -- The earliest date to use, we use this column for date predicates because it's the primary key, and operates faster.  OPM: on premise model.
+    and h.PT_CL5_CGA in (N'Total Beer', N'Total Cider')  -- Limit to beer and cider, PT_CL5_CGA has these
        and h.OT_CGAIdent > 0  -- Remove unwanted outlets
        and h.PT_ProductId > 0  -- Remove unwanted products
        and h.PT_AT_Format = N'Draught'  -- Limit to draught
