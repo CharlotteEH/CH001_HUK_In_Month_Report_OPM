@@ -2,7 +2,7 @@ from j_extract_lists import  list_date, list_market, list_product
 from i_apply_ndas import wide_results
 from pathlib import Path
 
-path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_1/d_Analysis")
+path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
 
 wide_results.loc[wide_results["product"].isin(["Carlsberg Marston's Brewing Company"]), "product"] = "Carlsberg Marstons Brewing Company"
 wide_results = wide_results.query('product in ["Birra Moretti",	"Peroni Nastro Azzurro", "Madri Excepcional", "Estrella Damm",	'

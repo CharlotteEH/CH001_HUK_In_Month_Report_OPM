@@ -25,9 +25,9 @@ print("\nthe unique locations are:\n", sorted(u),"\n")
 u = df["product_segment"].unique()
 print("\nthe unique product segments are:\n", sorted(u),"\n")
 
-# check the cil segment
-u = df["cil_segment"].unique()
-print("\nthe unique cil segments are:\n", sorted(u),"\n")
+# # check the cil segment
+# u = df["cil_segment"].unique()
+# print("\nthe unique cil segments are:\n", sorted(u),"\n")
 
 # check the product class
 u = df["product_class"].unique()

@@ -13,10 +13,10 @@ df["country"] = "GB"
 # all["date"] = "4 week period"
 # df = pd.concat([df, all])
 
-df["report_period"] = df["D_Period"] - 221
-all = df[:]
-all["date"] = "Four Week Period" + " " + all["report_period"].astype(str)
-df = pd.concat([df, all])
-
-print(df.head())
-print(df.tail())
+# df["report_period"] = df["period"] - 208
+# all = df[:]
+# all["date"] = "Four Week Period" + " " + all["report_period"].astype(str)
+# df = pd.concat([df, all])
+#
+# print(df.head())
+# print(df.tail())
