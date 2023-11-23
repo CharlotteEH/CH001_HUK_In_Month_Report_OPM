@@ -6,7 +6,7 @@ path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
 
 wide_results.loc[wide_results["product"].isin(["Carlsberg Marston's Brewing Company"]), "product"] = "Carlsberg Marstons Brewing Company"
 wide_results = wide_results.query('product in ["Birra Moretti",	"Peroni Nastro Azzurro", "Madri Excepcional", "Estrella Damm",	'
-                                  '"Corona Extra", "Staropramen", "Cobra", "Asahi Super Dry", "Angelo Poretti No 3", "Carling",'
+                                  '"Corona Extra", "Staropramen", "Cobra", "Asahi Super Dry", "Birrificio Angelo Poretti", "Carling",'
                                   '"Fosters", "Carlsberg Danish Pilsner", "Tennents Lager", "Coors", "Stella Artois", "San Miguel",'
                                   '"Amstel", "Kronenbourg 1664", "Pravha", "Bud Light", "Becks 4%", "Heineken Original", "Heineken Silver",'
                                   '"Cruzcampo",	"Beavertown Neck Oil Session IPA", "Camden Town Pale Ale", "John Smiths Extra Smooth",'
