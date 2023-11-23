@@ -7,7 +7,7 @@ df["brewer_group"] = "Group Brewer | " + df["product_group"]
 #df["brand_group"] = "Group Brand | " + df["custom_product_group"]
 df["drink_group"] = "Group Product | " + df["custom_product_group"]
 
-print(df.head(2))
+print(df.head(20))
 df_brewer = df[["date", "outlet_id", "region", "segment", "location",  "brewer", "value", "volume", "weight",
                 "country", "brewer_group"]]
 df_brewer = df_brewer.rename(columns={
@@ -69,8 +69,12 @@ df = pd.concat([region, segment, location, country], axis=0)
 
 
 df["market"] = df["market_group"]+" | " + df["market"]
+
+
+
+
 # from pathlib import Path
 #
-# cwd = Path(__file__).parent
+# path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
 #
-# df.to_csv(cwd / "test.csv", index=False)
+# df.to_csv(path/ "test.csv", index=False)

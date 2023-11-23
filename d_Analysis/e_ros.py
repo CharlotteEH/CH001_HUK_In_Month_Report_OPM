@@ -1,4 +1,4 @@
-from d_shares import df
+from d_checking_distribution import df
 from pathlib import Path
 
 path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
@@ -123,6 +123,14 @@ ros = pd.merge(
     how="inner"
 )
 
-ros["distribution"] = ros["weight"]/ros["market_weight"]
+ros["dist_pen"] = ros["weight"]/ros["market_weight"]
 
-ros.to_csv(path / "rostest3.csv", index=False)
+# ros.to_csv(path / "rostest3.csv", index=False)
+
+results = ros[["date", "market", "product", "drink_group", "volume_ros", "value_ros", "volume_share", "value_share",
+               "dist_pen"]]
+
+columns_to_widen = ["value_share", "volume_share", "value_ros", "volume_ros", "dist_pen"]
+
+wide_results = pd.melt(results, id_vars=["date", "market", "product", "drink_group"], value_vars=columns_to_widen, var_name="fact", value_name="value")
+
