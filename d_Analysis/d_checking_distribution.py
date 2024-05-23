@@ -53,8 +53,8 @@ ros = ros.reset_index()
 print(ros.head(10))
 print(ros.tail())
 
-# from pathlib import Path
-#
-# path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
-#
-# ros.to_csv(path / "rostest.csv", index=False)
+from pathlib import Path
+
+path = Path("Z:/PycharmProjects/CH001_HUK_In_Month_Report_OPM/d_Analysis")
+
+ros.to_csv(path / "disttest.csv", index=False)
